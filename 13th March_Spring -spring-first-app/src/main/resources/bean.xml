@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+
+    <context:annotation-config/>
+    <bean id="hello" class="com.cg.bean.HelloWorld" scope="singleton"> <!-- this informs the IOC container to provide the object for the given class -->
+<!--    singleton	One object per container (default)-->
+<!--    prototype	New object every request-->
+<!--    request	    One object per HTTP request-->
+<!--    session	    One object per HTTP session-->
+    <property name="name" value="Faiz"/> <!-- This is called setter injection. It calls setter method everytime and initialize the value-->
+<!--        <constructor-arg name="name" value="Zaid"></constructor-arg> &lt;!&ndash; This uses parametrized cons. to initialize the variables&ndash;&gt;-->
+    <property name="language">
+<!--        <list>-->
+<!--            <value>Hindi</value>-->
+<!--            <value>English</value>-->
+<!--            <value>Sanskrit</value>-->
+<!--        </list>-->
+        <set>
+            <value>Hindi</value>
+            <value>English</value>
+            <value>Sanskrit</value>
+            <value>Hindi</value>
+        </set>
+    </property>
+    </bean>
+
+    <bean id="e" class="com.cg.bean.Employee"> <!--if we use autowire we dont need to pass reference in property-->
+        <property name="empid" value="1001"/>
+        <property name="name" value="Sadiq"/>
+<!--        <property name="address" ref="add"/>-->
+
+<!--        <constructor-arg name="empid" value="1001"/>-->
+<!--        <constructor-arg name="name" value="Zaid"/>-->
+<!--        <constructor-arg name="address" ref="add"/>-->
+    </bean>
+
+    <bean id="add" class="com.cg.bean.Address">
+        <property name="city" value="Noida"/>
+        <property name="country" value="India"/>
+        <property name="zip" value="201308"/>
+
+<!--        <constructor-arg name="city" value="Noida"/>-->
+<!--        <constructor-arg name="country" value="India"/>-->
+<!--        <constructor-arg name="zip" value="201308"/>-->
+    </bean>
+
+    <bean id="add1" class="com.cg.bean.Address">
+        <property name="city" value="Delhi"/>
+        <property name="country" value="India"/>
+        <property name="zip" value="110025"/>
+    </bean>
+</beans>
