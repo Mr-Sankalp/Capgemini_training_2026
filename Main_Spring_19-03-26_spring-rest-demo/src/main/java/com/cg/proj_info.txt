@@ -1,0 +1,19 @@
+@GetMapping("employees")
+    public Employee getEmployee(){
+        return new Employee(101,"Sakshi Kumari", LocalDate.of(2002,9,18),80000);
+    }
+- The controller uses getter and setter method in Employee class, shows the data in JSON format.
+
+- Good-practice = 1st create interface then create service class.
+- jackson dependency helps in printing the json format.
+
+- controller calling --> service  --> calling dao/repo.
+
+- @Autowire can be done for interface , can be done for class but better to use for interface.
+
+- Controller --> Service --> Dao (IEmployeeRepo)
+
+-employee/name and employee/id is same endpoint - gives error
+- use constructor injection istead of field injection
+- update should be designed correctly to make it idempotent (on multiple hits it shows the same data)
+- endpoint design - "api/"
